@@ -163,6 +163,7 @@ merchant website URL
 **Payment Tips**
 
 * TUPAY is a gateway that connects to the following wallets: izipayYA (Tunki), Yape wallet, Plin, Agora pay, BBVA, Bim, Interbank, Kontigo, Ligo, Scotiabank, Sodexo.
+* For Yape wallet and Plin, the mobile user can upload a screenshot of the QR code to pay.
 {% endhint %}
 
 ## Example
