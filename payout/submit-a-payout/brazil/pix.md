@@ -205,7 +205,7 @@ curl --location --request POST 'https://sandbox.transfersmile.com/api/payout' \
     * "account_type": "CPF",  // should be one of CPF CNPJ PHONE EMAIL EVP
     * "source_currency": "BRL", 
     * "additional_remark": "pagsmile payout test remark",
-    * "country": "BRA", // fixed value: BRA
+    * "country": "BRA" // fixed value: BRA
 }'
 ```
 
