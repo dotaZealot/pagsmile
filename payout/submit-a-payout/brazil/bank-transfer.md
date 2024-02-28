@@ -67,10 +67,10 @@ Beneficiary's Account Type\
 \- One of: SAVINGS, CHECKING -
 {% endswagger-parameter %}
 
-{% swagger-parameter in="body" name="account_digit" type="string" required="true" %}
+{% swagger-parameter in="body" name="account_digit" type="string" required="false" %}
 Account Digit
 
-\- 1 or 2 digits -
+\- 1 or 2 digits. Left empty if the account\_digit is included in the account field -
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="branch_digit" type="string" %}
@@ -220,8 +220,8 @@ curl --location --request POST 'https://sandbox.transfersmile.com/api/payout' \
       "email": "payout@pagsmile.com",
     * "bank_code": "001",
     * "account_type": "CHECKING", // should be one of SAVINGS, CHECKING
-    * "account": "6***8",
-    * "account_digit": "4",
+    * "account": "6***84", // "4" is the account digit
+      "account_digit": "",
     * "branch": "0**8",
     * "document_id": "12*******91",
     * "document_type": "CPF",  // should be one of CPF, CNPJ
@@ -255,6 +255,18 @@ Note:  _**94FAC\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*68548**_ is Pagsmile's 
 * D --> Alphanumeric character
 
 <table><thead><tr><th width="128">Bank code</th><th width="152">Bank name</th><th width="146">Bank branch</th><th width="168">Checking account</th><th>Savings account</th></tr></thead><tbody><tr><td>001</td><td>Banco do Brasil S.A.</td><td>XXXX, XXXXD or XXXX-D</td><td>XXXXXXXX or XXXXXXXX-X</td><td>XXXXXXXXX or XXXXXXXXX-X Prefixes: 00, 01, 51, 02, 52, 91, 92, 96 or 97</td></tr><tr><td>033</td><td>Banco Santander Brasil S.A.</td><td>XXXX</td><td>XXXXXXXX-X Prefixes: 01, 02, 03, 05, 09, 13 or 92</td><td>XXXXXXXX-X Prefixes: 60</td></tr><tr><td>104</td><td>Caixa CEF</td><td>XXXX, XXXXX or XXXX-X</td><td>XXX.XXXXXXXX-X or any combination with or without ',' or '-' characters and prefix or verification code Prefixes: 001, 010, 003 or 023 </td><td>XXXX.XXXXXXXXX-X //XXX.XXXXXXXX-X or any combination with or without ',' or '-' characters and prefix or verification code Prefixes: 1288 or 013, 022</td></tr><tr><td>237</td><td>Banco Bradesco S.A.</td><td>XXXX, XXXXX or XXXX-X</td><td>XXXXXXX or XXXXXXX-X</td><td>XXXXXXX or XXXXXXX-X</td></tr><tr><td>341</td><td>Itau Unibanco S.A.</td><td>XXXX</td><td>XXXXX-X</td><td>XXXXX-X</td></tr><tr><td>399</td><td>HSBC Bank Brasil S.A.</td><td>XXXX, XXXXD, XXXXDD, XXXX-D or XXXX-DD</td><td>XXXXX-XX</td><td>XXXXX-XX</td></tr><tr><td>-</td><td>Other banks</td><td>XXXX, XXXXD, XXXXDD, XXXX-D or XXXX-DD</td><td>-</td><td>-</td></tr></tbody></table>
+
+{% hint style="info" %}
+"account\_digit" is optional. If the user fills full account number in the "account" field, the "account\_digit" field should be removed or left empty. For example, if the complete account number is 1234-5, then the request can be
+
+`"account": "12345"`
+
+or
+
+`"account": "1234",`
+
+`"account_digit": "5"`
+{% endhint %}
 
 ## Third-party CPF/CNPJ Validator
 
