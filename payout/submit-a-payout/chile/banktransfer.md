@@ -229,9 +229,15 @@ Note:  _**94FAC\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*68548**_ is Pagsmile'
 * For individuals, RUT is the same as RUN. For businesses, they only have RUT.
 {% endhint %}
 
-<table><thead><tr><th width="173">Document Type</th><th width="133">Document ID</th><th width="229">Description</th><th width="418"></th><th></th></tr></thead><tbody><tr><td>RUT</td><td>1*******6</td><td>9 digits</td><td>A RUT <em>(Rol Único Tributario)</em> is the individual tax ID number</td><td></td></tr><tr><td>RUN</td><td>2*******8</td><td>9 digits</td><td>A RUN <em>(Rol Único Nacional)</em> is a unique identification number given to every Chilean resident, foreign resident, and anyone who stays in Chile on anything other than a tourist visa</td><td></td></tr><tr><td>CE</td><td>3********9</td><td>between 9 and 16 digits</td><td></td><td></td></tr><tr><td>PASS</td><td>4********0</td><td>between 9 and 16 digits</td><td></td><td></td></tr></tbody></table>
+<table><thead><tr><th width="173">Document Type</th><th width="133">Document ID</th><th width="229">Format</th><th width="418">Description</th><th></th></tr></thead><tbody><tr><td>RUT</td><td>1*******6</td><td>9 digits</td><td>A RUT <em>(Rol Único Tributario)</em> is the individual tax ID number</td><td></td></tr><tr><td>RUN</td><td>2*******8</td><td>9 digits</td><td>A RUN <em>(Rol Único Nacional)</em> is a unique identification number given to every Chilean resident, foreign resident, and anyone who stays in Chile on anything other than a tourist visa</td><td></td></tr><tr><td>CE</td><td>3********9</td><td>between 9 and 16 digits</td><td>Carnet de Extranjería</td><td></td></tr><tr><td>PASS</td><td>4********0</td><td>between 9 and 16 digits</td><td>Passport</td><td></td></tr></tbody></table>
 
 ## Example of Account
+
+{% hint style="info" %}
+Account type "RUT" is a very simple account that people starting in banking can have that is associated with their tax ID, usually for people getting benefits from the government.&#x20;
+
+Account type "VISTA" is like a savings account but without the option to gain interest on your funds, often used for companies to pay salaries to their employees.
+{% endhint %}
 
 | Bank                      | Bank Code | Description                                                        |
 | ------------------------- | --------- | ------------------------------------------------------------------ |
