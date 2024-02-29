@@ -70,7 +70,7 @@ One of \[beneficiary | merchant]
 {% swagger-parameter in="body" type="String" name="amount" required="true" %}
 Payout amount, should be an Integer.
 
-\- Min 1, Max 10,000,000 COP per transaction -
+\- Min 1000, Max 10,000,000 COP per transaction -
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="amount_type" type="String" %}
