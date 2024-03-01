@@ -4,103 +4,13 @@ description: Where to find bank code in Mexico.
 
 # Bank in Mexico
 
-## Bank Codes
+Bank Codes
 
-{% file src="../../.gitbook/assets/bank_list_mexico.csv" %}
-bank code list in csv
-{% endfile %}
+
 
 Check below the different values that bank\_code parameter can take in Mexico.
 
-| Bank Name                                         | Bank Code |
-| ------------------------------------------------- | --------- |
-| ABC CAPITAL                                       | 40138     |
-| ACCENDO BANCO                                     | 40102     |
-| ACTINVER                                          | 40133     |
-| AFIRME                                            | 40062     |
-| AKALA                                             | 90638     |
-| AMERICAN EXPRES                                   | 40103     |
-| ASP INTEGRA OPC                                   | 90659     |
-| AUTOFIN                                           | 40128     |
-| AZTECA                                            | 40127     |
-| BAJIO                                             | 40030     |
-| BANAMEX                                           | 40002     |
-| BANCO FINTERRA                                    | 40154     |
-| BANCO S3                                          | 40160     |
-| BANCOMEXT                                         | 37006     |
-| BANCOPPEL                                         | 40137     |
-| BANCREA                                           | 40152     |
-| BANJERCITO                                        | 37019     |
-| BANK OF AMERICA                                   | 40106     |
-| BANKAOOL                                          | 40147     |
-| BANOBRAS                                          | 37009     |
-| BANORTE                                           | 40072     |
-| BANREGIO                                          | 40058     |
-| BANSEFI                                           | 37166     |
-| BANSI                                             | 40060     |
-| BANXICO                                           | 2001      |
-| BARCLAYS                                          | 40129     |
-| BBASE                                             | 40145     |
-| BBVA BANCOMER                                     | 40012     |
-| BMONEX                                            | 40112     |
-| CAJA POP MEXICA                                   | 90677     |
-| CAJA TELEFONIST                                   | 90683     |
-| CB INTERCAM                                       | 90630     |
-| CI BOLSA                                          | 90631     |
-| CIBANCO                                           | 40143     |
-| CoDi Valida                                       | 90903     |
-| COMPARTAMOS                                       | 40130     |
-| CONSUBANCO                                        | 40140     |
-| CREDICAPITAL                                      | 90652     |
-| CREDIT SUISSE                                     | 40126     |
-| CRISTOBAL COLON                                   | 90680     |
-| DEUTSCHE                                          | 40124     |
-| DONDE                                             | 40151     |
-| ESTRUCTURADORES                                   | 90606     |
-| EVERCORE                                          | 90648     |
-| FINAMEX                                           | 90616     |
-| FINCOMUN                                          | 90634     |
-| FOMPED                                            | 90689     |
-| FONDO (FIRA)                                      | 90685     |
-| GBM                                               | 90601     |
-| HDI SEGUROS                                       | 90636     |
-| HIPOTECARIA FED                                   | 37168     |
-| HSBC                                              | 40021     |
-| ICBC                                              | 40155     |
-| INBURSA                                           | 40036     |
-| INDEVAL                                           | 90902     |
-| INMOBILIARIO                                      | 40150     |
-| INTERCAM BANCO                                    | 40136     |
-| INVERCAP                                          | 90686     |
-| INVEX                                             | 40059     |
-| JP MORGAN                                         | 40110     |
-| KUSPIT                                            | 90653     |
-| LIBERTAD                                          | 90670     |
-| MASARI                                            | 90602     |
-| MIFEL                                             | 40042     |
-| MIZUHO BANK                                       | 40158     |
-| MONEXCB                                           | 90600     |
-| MUFG                                              | 40108     |
-| MULTIVA BANCO                                     | 40132     |
-| MULTIVA CBOLSA                                    | 90613     |
-| NAFIN                                             | 37135     |
-| PAGATODO                                          | 40148     |
-| PROFUTURO                                         | 90620     |
-| REFORMA                                           | 90642     |
-| SABADELL                                          | 40156     |
-| SANTANDER                                         | 40014     |
-| SANTANDER2                                        | 90814     |
-| SCOTIABANK                                        | 40044     |
-| SHINHAN                                           | 40157     |
-| STP                                               | 90646     |
-| Inteligencia en Finanzas, S.A.P.I. de C.V. (ALBO) | 90646     |
-| TRANSFER                                          | 90684     |
-| UNAGRA                                            | 90656     |
-| VALMEX                                            | 90617     |
-| VALUE                                             | 90605     |
-| VE POR MAS                                        | 40113     |
-| VECTOR                                            | 90608     |
-| VOLKSWAGEN                                        | 40141     |
+<table data-header-hidden><thead><tr><th width="374">Bank Name</th><th>Bank Code</th></tr></thead><tbody><tr><td>Bank Name</td><td>Bank Code</td></tr><tr><td>ABC CAPITAL</td><td>40138</td></tr><tr><td>ACTINVER</td><td>40133</td></tr><tr><td>AFIRME</td><td>40062</td></tr><tr><td>ALTERNATIVOS</td><td>90661</td></tr><tr><td>ARCUS</td><td>90706</td></tr><tr><td>ASP INTEGRA OPC</td><td>90659</td></tr><tr><td>AUTOFIN</td><td>40128</td></tr><tr><td>AZTECA</td><td>40127</td></tr><tr><td>BaBien</td><td>37166</td></tr><tr><td>BAJIO</td><td>40030</td></tr><tr><td>BANAMEX</td><td>40002</td></tr><tr><td>BANCO COVALTO</td><td>40154</td></tr><tr><td>BANCO S3</td><td>40160</td></tr><tr><td>BANCOMEXT</td><td>37006</td></tr><tr><td>BANCOPPEL</td><td>40137</td></tr><tr><td>BANCREA</td><td>40152</td></tr><tr><td>BANJERCITO</td><td>37019</td></tr><tr><td>BANK OF AMERICA</td><td>40106</td></tr><tr><td>BANK OF CHINA</td><td>40159</td></tr><tr><td>BANKAOOL</td><td>40147</td></tr><tr><td>BANOBRAS</td><td>37009</td></tr><tr><td>BANORTE</td><td>40072</td></tr><tr><td>BANREGIO</td><td>40058</td></tr><tr><td>BANSI</td><td>40060</td></tr><tr><td>BANXICO</td><td>2001</td></tr><tr><td>BARCLAYS</td><td>40129</td></tr><tr><td>BBASE</td><td>40145</td></tr><tr><td>BBVA MEXICO</td><td>40012</td></tr><tr><td>BMONEX</td><td>40112</td></tr><tr><td>CAJA POP MEXICA</td><td>90677</td></tr><tr><td>CAJA TELEFONIST</td><td>90683</td></tr><tr><td>CB INTERCAM</td><td>90630</td></tr><tr><td>CI BOLSA</td><td>90631</td></tr><tr><td>CIBANCO</td><td>40143</td></tr><tr><td>CLS</td><td>90901</td></tr><tr><td>CoDi Valida</td><td>90903</td></tr><tr><td>COMPARTAMOS</td><td>40130</td></tr><tr><td>CONSUBANCO</td><td>40140</td></tr><tr><td>CREDICAPITAL</td><td>90652</td></tr><tr><td>CREDICLUB</td><td>90688</td></tr><tr><td>CRISTOBAL COLON</td><td>90680</td></tr><tr><td>Cuenca</td><td>90723</td></tr><tr><td>DONDE</td><td>40151</td></tr><tr><td>FINAMEX</td><td>90616</td></tr><tr><td>FINCOMUN</td><td>90634</td></tr><tr><td>FOMPED</td><td>90689</td></tr><tr><td>FONDO (FIRA)</td><td>90685</td></tr><tr><td>GBM</td><td>90601</td></tr><tr><td>HIPOTECARIA FED</td><td>37168</td></tr><tr><td>HSBC</td><td>40021</td></tr><tr><td>ICBC</td><td>40155</td></tr><tr><td>INBURSA</td><td>40036</td></tr><tr><td>INDEVAL</td><td>90902</td></tr><tr><td>INMOBILIARIO</td><td>40150</td></tr><tr><td>INTERCAM BANCO</td><td>40136</td></tr><tr><td>INVERCAP</td><td>90686</td></tr><tr><td>INVEX</td><td>40059</td></tr><tr><td>JP MORGAN</td><td>40110</td></tr><tr><td>KUSPIT</td><td>90653</td></tr><tr><td>LIBERTAD</td><td>90670</td></tr><tr><td>MASARI</td><td>90602</td></tr><tr><td>Mercado Pago W</td><td>90722</td></tr><tr><td>MIFEL</td><td>40042</td></tr><tr><td>MIZUHO BANK</td><td>40158</td></tr><tr><td>MONEXCB</td><td>90600</td></tr><tr><td>MUFG</td><td>40108</td></tr><tr><td>MULTIVA BANCO</td><td>40132</td></tr><tr><td>NAFIN</td><td>37135</td></tr><tr><td>NU MEXICO</td><td>90638</td></tr><tr><td>NVIO</td><td>90710</td></tr><tr><td>PAGATODO</td><td>40148</td></tr><tr><td>PROFUTURO</td><td>90620</td></tr><tr><td>SABADELL</td><td>40156</td></tr><tr><td>SANTANDER</td><td>40014</td></tr><tr><td>SCOTIABANK</td><td>40044</td></tr><tr><td>SHINHAN</td><td>40157</td></tr><tr><td>STP</td><td>90646</td></tr><tr><td>TRANSFER</td><td>90684</td></tr><tr><td>UNAGRA</td><td>90656</td></tr><tr><td>VALMEX</td><td>90617</td></tr><tr><td>VALUE</td><td>90605</td></tr><tr><td>VE POR MAS</td><td>40113</td></tr><tr><td>VECTOR</td><td>90608</td></tr><tr><td>VOLKSWAGEN</td><td>40141</td></tr></tbody></table>
 
 {% hint style="info" %}
 Inteligencia en Finanzas, S.A.P.I. de C.V. (ALBO) and Fondea Technologies S.A de C.V, S.F.P (Fondeadora) share the same bank code with STP
