@@ -99,7 +99,7 @@ merchant user's id
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="regions" type="array" %}
-regions of the payment. The format is \["XXX"]\
+regions of the payment. The format is ISO 3166-1 alpha-3\
 \- ARG, BRA, etc. Check [here](../data/country-code.md) -&#x20;
 {% endswagger-parameter %}
 

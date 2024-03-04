@@ -83,7 +83,7 @@ merchant website URL
 
 {% swagger-response status="200" description="submit successfully" %}
 {% tabs %}
-{% tab title="DANA" %}
+{% tab title=" BOOST" %}
 <pre><code>{
     "code": "10000",
     "msg": "Success",

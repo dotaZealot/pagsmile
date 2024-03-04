@@ -39,7 +39,7 @@ Fixed value: Wallet
 
 {% swagger-parameter in="body" name="channel" type="string" required="true" %}
 Wallet type\
-\- KakaoPay -
+\- KakaoPay, NaverPay, Payco, SamsungPay or TOSS-
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="order_currency" required="true" type="string" %}
@@ -48,7 +48,7 @@ Fixed value: KRW
 
 {% swagger-parameter in="body" name="order_amount" required="true" type="string" %}
 payment amount\
-\- 50 - 2,000,000 -
+\- 100 - 2,000,000 -
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="subject" required="true" type="string" %}
@@ -81,9 +81,14 @@ merchant website URL
 \- Max. 128 chars -
 {% endswagger-parameter %}
 
+{% swagger-parameter in="body" required="true" name="customer.email" type="string" %}
+user's email\
+\- Required for SamsungPay, Payco, TOSS; Optional for KakaoPay, NaverPay -
+{% endswagger-parameter %}
+
 {% swagger-response status="200" description="submit successfully" %}
 {% tabs %}
-{% tab title="DANA" %}
+{% tab title="KakaoPay" %}
 ```
 {
     "code": "10000",
@@ -92,8 +97,64 @@ merchant website URL
     "out_trade_no": "202201010354006",
     "web_url": "",
     "trade_status": "PROCESSING",
-    "qr_code":"2816660400930nDD49BbO48Meg32RZg31cEB",
-    "wallet_url":"https://open-sea.alipayplus.com/api/open/v1/ac/cashier/self/codevalue/checkout.htm?codeValue="
+    "qr_code": "2816660400930nDD49BbO48Meg32RZg31cEB", //Check with your AM to see if this parameter could be returned through API
+    "wallet_url": "https://open-sea.alipayplus.com/api/open/v1/ac/cashier/self/codevalue/checkout.htm?codeValue="
+}
+```
+{% endtab %}
+
+{% tab title="NaverPay" %}
+```
+{
+    "code": "10000",
+    "msg": "Success",
+    "trade_no": "2022010110293900083",
+    "out_trade_no": "202201010354006",
+    "web_url": "",
+    "trade_status": "PROCESSING",
+    "pay_url":"https://pay.naver.com/payments/20240304***PQ=="
+}
+```
+{% endtab %}
+
+{% tab title="Payco" %}
+```
+{
+    "code": "10000",
+    "msg": "Success",
+    "trade_no": "2022010110293900083",
+    "out_trade_no": "202201010354006",
+    "web_url": "",
+    "trade_status": "PROCESSING",
+    "wallet_url":"https://pgweb.payletter.com/hub/eyJ0e***amkR0"
+}
+```
+{% endtab %}
+
+{% tab title="SamsungPay" %}
+```
+{
+    "code": "10000",
+    "msg": "Success",
+    "trade_no": "2022010110293900083",
+    "out_trade_no": "202201010354006",
+    "web_url": "",
+    "trade_status": "PROCESSING",
+    "wallet_url":"https://pg1.payletter.com/pgsvc/hub.asp?location=online&token=1709**************"
+}
+```
+{% endtab %}
+
+{% tab title="TOSS" %}
+```
+{
+    "code": "10000",
+    "msg": "Success",
+    "trade_no": "2022010110293900083",
+    "out_trade_no": "202201010354006",
+    "web_url": "",
+    "trade_status": "PROCESSING",
+    "wallet_url":"https://pg1.payletter.com/pgsvc/hub.asp?location=online&token=1709**************"
 }
 ```
 {% endtab %}
@@ -126,12 +187,14 @@ curl --location --request POST 'https://gateway-test.pagsmile.com/trade/pay' \
     "order_amount": "300",
     "order_currency": "KRW",
     "subject": "trade pay test",
-    "content": "trade pay test conent",
+    "content": "trade pay test content",
     "notify_url": "http://merchant/callback/success",
     "return_url": "https://www.merchant.com",
     "buyer_id": "buyer_0101_0001",
     "timestamp": "2022-01-01 03:54:01",
-    "timeout_express":"300m"
+    "timeout_express": "300m",
+    "customer": {
+        "email": "gtest1@gmail.com" //Required for SamsungPay, Payco, TOSS; Optional for KakaoPay, NaverPay 
     }'
 ```
 
