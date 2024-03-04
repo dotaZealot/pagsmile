@@ -2,7 +2,7 @@
 description: How to use Boleto to submit a payin in Brazil.
 ---
 
-# Deposit Express
+# ❌ Deposit Express
 
 {% swagger baseUrl="https://gateway-test.pagsmile.com" path="/trade/pay" method="post" summary="Payin by Deposit Express" %}
 {% swagger-description %}
@@ -156,8 +156,8 @@ merchant website URL
 {% endswagger-response %}
 {% endswagger %}
 
-{% hint style="warning" %}
-Please check [OpenFinance](openfinance.md) which is a new instant bank transfer method in Brazil. OpenFinance requires fewer actions to complete the payment.
+{% hint style="danger" %}
+Deposit Express was terminated on Feb 29th, 2024. Please check [OpenFinance](openfinance.md) which is a new instant bank transfer method in Brazil. OpenFinance requires fewer actions to complete the payment.
 {% endhint %}
 
 {% hint style="info" %}
