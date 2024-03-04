@@ -21,7 +21,7 @@
 
 #### Colombia <a href="#colombia" id="colombia"></a>
 
-<table><thead><tr><th>Parameter</th><th width="150">Method</th><th width="208">Amount Limit(COP)</th><th>Settled Time</th><th>Description</th></tr></thead><tbody><tr><td>method=WALLET, channel = TPaga</td><td>Tpaga Wallet</td><td>1~2,000,000 </td><td>Instant</td><td></td></tr><tr><td>BANKTRANSFER</td><td>Bank Transfer</td><td>1~2,000,000 </td><td>1~3 work day</td><td></td></tr><tr><td>Transfiya</td><td>Transfiya</td><td>1~10,000,000</td><td>Instant</td><td></td></tr></tbody></table>
+<table><thead><tr><th>Parameter</th><th width="150">Method</th><th width="208">Amount Limit(COP)</th><th>Settled Time</th><th>Description</th></tr></thead><tbody><tr><td>method=WALLET, channel = TPaga</td><td>Tpaga Wallet</td><td>1~2,000,000 </td><td>Instant</td><td></td></tr><tr><td>BANKTRANSFER</td><td>Bank Transfer</td><td>1~2,000,000 </td><td>1~3 work day</td><td></td></tr><tr><td>Transfiya</td><td>Transfiya</td><td>1,000~10,000,000</td><td>Instant</td><td></td></tr></tbody></table>
 
 #### Chile <a href="#colombia" id="colombia"></a>
 
