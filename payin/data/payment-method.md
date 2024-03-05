@@ -26,7 +26,7 @@
 
 #### Ecuador <a href="#ecuador" id="ecuador"></a>
 
-<table><thead><tr><th width="200">Parameter</th><th width="149">Method</th><th width="194">Amount Limit(USD)</th><th width="170">Settled Time</th><th width="245">Expire Time</th><th>Refund</th></tr></thead><tbody><tr><td>BankTransfer</td><td>Bank Transfer</td><td>1~10,000</td><td>Instant after paid</td><td>Users need to pay in 1 hour</td><td>No</td></tr><tr><td>Cash</td><td>Cash</td><td>2~500</td><td>Instant after paid</td><td>Users need to pay in 1 day</td><td>No</td></tr></tbody></table>
+<table><thead><tr><th width="200">Parameter</th><th width="149">Method</th><th width="194">Amount Limit(USD)</th><th width="170">Settled Time</th><th width="245">Expire Time</th><th>Refund</th></tr></thead><tbody><tr><td>BankTransfer</td><td>Bank Transfer</td><td>2~10,000</td><td>Instant after paid</td><td>Users need to pay in 1 hour</td><td>No</td></tr><tr><td>Cash</td><td>Cash</td><td>1~500</td><td>Instant after paid</td><td>Users need to pay in 1 day</td><td>No</td></tr></tbody></table>
 
 **Bolivia**
 
