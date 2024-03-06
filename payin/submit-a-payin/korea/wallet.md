@@ -111,8 +111,9 @@ user's email\
     "trade_no": "2022010110293900083",
     "out_trade_no": "202201010354006",
     "web_url": "",
+    "pay_url":"https://pay.naver.com/payments/20240304***PQ==",
     "trade_status": "PROCESSING",
-    "pay_url":"https://pay.naver.com/payments/20240304***PQ=="
+    "wallet_url":"https://pay.naver.com/payments/20240304***PQ=="
 }
 ```
 {% endtab %}
