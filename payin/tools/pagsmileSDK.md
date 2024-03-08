@@ -34,7 +34,7 @@ pagsmileSDK.clearData("502.844.147-27") // 50284414727
 
 ### Demo Website <a href="#monitor-form-submission-events" id="monitor-form-submission-events"></a>
 
-Click [here ](https://checkout.pagsmile.com/public/pagsmileSDK/sdkExample.html)to access demo website.
+Click [here ](https://checkoutv2.pagsmile.com/public/pagsmileSDK/sdkExample)to access demo website.
 
 ```
 <!DOCTYPE html>
