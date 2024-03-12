@@ -210,7 +210,8 @@
   * [API Code](payout/api-code.md)
 * [E-com Platform](e-com-platform/README.md)
   * [Support Platform](e-com-platform/support-platform.md)
-  * [Shoplazza](e-com-platform/shoplazza.md)
+  * [Shoplazza ](e-com-platform/shoplazza.md)
+  * [WIX](e-com-platform/wix.md)
 * [Country Info](country-info.md)
 
 ## OTHER
