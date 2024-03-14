@@ -124,7 +124,7 @@ User's identification type
 \- CPF or CNPJ -
 {% endswagger-parameter %}
 
-{% swagger-parameter in="body" name="address.zip_code" required="true" type="string" %}
+{% swagger-parameter in="body" name="address.zip_code" required="false" type="string" %}
 zip code
 {% endswagger-parameter %}
 
@@ -252,8 +252,8 @@ curl --location --request POST 'https://gateway-test.pagsmile.com/trade/pay' \
           "email": "test@pagsmile.com",
           "phone": "75991435892"
       },
-    * "address": {
-    *     "zip_code": "38082365",
+      "address": {
+          "zip_code": "38082365",
       },
       "threeds": { //The "threeds" parameters are required to apply 3DS.
           "version":"2.1.0",
