@@ -88,31 +88,37 @@ issuer of CreditCard
 installments for CreditCard
 {% endswagger-parameter %}
 
+{% swagger-parameter in="body" name="timeout_express" type="string" %}
+m(minutes), h(hours), d(days), c(always end in current day).&#x20;
+
+Used to control the expiration time of **submitting** an order (from initial to processing).  (90m in default, max 15d)
+{% endswagger-parameter %}
+
 {% swagger-parameter in="body" name="website_url" type="string" %}
 merchant website URL
 
 \- Max. 128 chars -
 {% endswagger-parameter %}
 
-{% swagger-parameter in="body" name="customer.name" type="string" required="true" %}
+{% swagger-parameter in="body" name="customer.name" type="string" required="false" %}
 User's name
 {% endswagger-parameter %}
 
-{% swagger-parameter in="body" name="customer.phone" type="string" required="true" %}
+{% swagger-parameter in="body" name="customer.phone" type="string" required="false" %}
 User's phone
 {% endswagger-parameter %}
 
-{% swagger-parameter in="body" name="customer.email" type="string" required="true" %}
+{% swagger-parameter in="body" name="customer.email" type="string" required="false" %}
 User's email
 {% endswagger-parameter %}
 
-{% swagger-parameter in="body" name="customer.identify.number" type="string" required="true" %}
+{% swagger-parameter in="body" name="customer.identify.number" type="string" required="false" %}
 User's identification number
 
 \- 11 digits if CPF or 14 digits if CNPJ -
 {% endswagger-parameter %}
 
-{% swagger-parameter in="body" name="customer.identify.type" type="string" required="true" %}
+{% swagger-parameter in="body" name="customer.identify.type" type="string" required="false" %}
 User's identification type
 
 \- CPF or CNPJ -
@@ -149,11 +155,11 @@ street
 Version used in the transaction
 {% endswagger-parameter %}
 
-{% swagger-parameter in="body" name="threeds.cavv" type="string" required="true" %}
+{% swagger-parameter in="body" name="threeds.cavv" type="string" required="false" %}
 Authentication Value (CAVV / AAV for 3DS1) recieved from authorization/Authentication response
 {% endswagger-parameter %}
 
-{% swagger-parameter in="body" name="threeds.eci" type="string" required="true" %}
+{% swagger-parameter in="body" name="threeds.eci" type="string" required="false" %}
 ECI value recieved from authorization/authentication response
 {% endswagger-parameter %}
 
@@ -210,6 +216,10 @@ liability shift - indicate whether the chargeback liability shifted to the card 
 {% endswagger-response %}
 {% endswagger %}
 
+{% hint style="info" %}
+The merchant should have 3DS provider to get the value of "threeds".
+{% endhint %}
+
 ### Example
 
 ```
@@ -217,35 +227,35 @@ curl --location --request POST 'https://gateway-test.pagsmile.com/trade/pay' \
 --header 'Authorization: Basic MTYyNTgyOTIxNDUzMTY2Mzg6UGFnc21pbGVfc2tfZDUwMWQ1ZGNkNTI5OGQ5N2MwNmUzYjI4YjA2OWZjZmY3NDU5ZjY2NzNiMjFjMTFlYTY3NDM5MDgzOTZkOTYxNQ==' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "app_id": "162************38",
-    "out_trade_no": "202201010354003",
-    "method": "CreditCard",
-    "order_amount": "12.01",
-    "order_currency": "BRL",
-    "subject": "trade pay test",
-    "content": "trade pay test conent",
-    "notify_url": "http://merchant/callback/success",
-    "return_url": "https://www.merchant.com",
-    "buyer_id": "buyer_0101_0001",
-    "user_ip":"127.0.0.1",
-    "token":"${token}",
-    "issuer":"visa",
-    "installments":"1",
-    "timestamp": "2022-01-01 03:54:01",
-    "timeout_express":"1c",
-    "customer" : {
-        "identify": {
-            "type": "CPF",
-            "number": "50284414727"
-        },
-        "name": "Test User Name",
-        "email": "test@pagsmile.com",
-        "phone": "75991435892"
-    },
-    "address" : {
-        "zip_code": "38082365",
-    },
-    "threeds": {
+    * "app_id": "162************38",
+    * "out_trade_no": "202201010354003",
+    * "method": "CreditCard",
+    * "order_amount": "12.01",
+    * "order_currency": "BRL",
+    * "subject": "trade pay test",
+    * "content": "trade pay test conent",
+    * "notify_url": "http://merchant/callback/success",
+      "return_url": "https://www.merchant.com",
+    * "buyer_id": "buyer_0101_0001",
+    * "user_ip":"127.0.0.1",
+    * "token":"${token}",
+    * "issuer":"visa",
+      "installments":"1",
+    * "timestamp": "2022-01-01 03:54:01",
+      "timeout_express":"1c",
+      "customer" : {
+          "identify": {
+              "type": "CPF",
+              "number": "50284414727"
+          },
+          "name": "Test User Name",
+          "email": "test@pagsmile.com",
+          "phone": "75991435892"
+      },
+    * "address": {
+    *     "zip_code": "38082365",
+      },
+      "threeds": { //The "threeds" parameters are required to apply 3DS.
           "version":"2.1.0",
           "cavv":"MTIzNDU2Nzg5MDEyMzQ1Njc4OTA",
           "eci":"05",
@@ -256,7 +266,7 @@ curl --location --request POST 'https://gateway-test.pagsmile.com/trade/pay' \
           "status_code":"Y",
           "status_reason_code":"15",
           "liability_shift":"true"
-    }
+      }
 }'
 ```
 

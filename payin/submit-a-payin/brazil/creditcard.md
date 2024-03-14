@@ -220,6 +220,10 @@ liability shift - indicate whether the chargeback liability shifted to the card 
 {% endswagger-response %}
 {% endswagger %}
 
+{% hint style="info" %}
+It is required to implement our JS library for integrating this method.
+{% endhint %}
+
 ## Example
 
 <pre><code>curl --location --request POST 'https://gateway-test.pagsmile.com/trade/pay' \

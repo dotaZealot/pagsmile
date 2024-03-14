@@ -4,6 +4,10 @@ description: This integration requires PCI Certification.
 
 # PCI Direct Integration
 
+{% hint style="info" %}
+PCI is required to use this integration type.
+{% endhint %}
+
 ## Create an Order
 
 {% tabs %}
