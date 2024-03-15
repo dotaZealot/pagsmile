@@ -164,6 +164,13 @@ zip code
 {% endswagger-response %}
 {% endswagger %}
 
+{% hint style="info" %}
+Check [here](../data/payment-method.md) for supported methods.&#x20;
+
+* If not passing the parameter "method" or pass "method": "", all enabled methods will be shown to the user on the checkout page.
+* If passing "method": "PIX", only PIX will be shown to the user on the checkout page.
+{% endhint %}
+
 ## Example
 
 ```
@@ -218,3 +225,7 @@ Note:  **162\*\*\*\*\*\*\*\*\*\*\*\*38** is pagsmile's test app id for sandbox, 
 {% hint style="danger" %}
 Please use your own **app\_id** and generate your own **authorization token** when testing.
 {% endhint %}
+
+<figure><img src="../../.gitbook/assets/image (30).png" alt=""><figcaption><p>The Checkout page without specifying "method"</p></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/image (31).png" alt=""><figcaption><p>The Checkout page with specifying "method":"PIX" (as an exmaple)</p></figcaption></figure>
