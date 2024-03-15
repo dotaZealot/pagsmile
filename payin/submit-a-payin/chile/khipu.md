@@ -206,7 +206,7 @@ curl --location --request POST 'https://gateway-test.pagsmile.com/trade/pay' \
 * KHIPU works as an interface that connects the user with the Bank platform and simplifies the bank transfer flow, therefore, the user RUT and Clave (Password/PIN) that users enter on KHIPU should be the same as the one they used to enter their e-banking
 {% endhint %}
 
-<figure><img src="../../../.gitbook/assets/image.png" alt="" width="308"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1).png" alt="" width="308"><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 Note:  **162\*\*\*\*\*\*\*\*\*\*\*\*38** is pagsmile's test app id for sandbox, and **MTYyNTgyOTIxNDUzMTY2Mzg6UGFnc21pbGVfc2tfZDUwMWQ1ZGNkNTI5OGQ5N2MwNmUzYjI4YjA2OWZjZmY3NDU5ZjY2NzNiMjFjMTFlYTY3NDM5MDgzOTZkOTYxNQ==** is authorization token associated with the test app id.&#x20;

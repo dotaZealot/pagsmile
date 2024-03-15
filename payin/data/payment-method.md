@@ -46,7 +46,7 @@
 
 **Panama**
 
-<table><thead><tr><th width="155">Parameter</th><th width="150">Method</th><th width="184">Amount Limit(USD)</th><th width="171">Settled Time</th><th>Expire Time</th><th>Refund</th></tr></thead><tbody><tr><td>Cash</td><td>Cash</td><td>1~200</td><td>Instant after paid</td><td>Users need to pay in 1 day</td><td>No</td></tr><tr><td><del>BankTransfer</del></td><td>BankTransfer</td><td>1~2,500</td><td>Instant after paid</td><td></td><td>No</td></tr></tbody></table>
+<table><thead><tr><th width="155">Parameter</th><th width="150">Method</th><th width="184">Amount Limit(USD)</th><th width="163">Settled Time</th><th width="138">Expire Time</th><th>Refund</th></tr></thead><tbody><tr><td>BankTransfer</td><td>Bank Transfer</td><td>1~100,000</td><td></td><td>Users need to pay in 7 day</td><td>No</td></tr><tr><td>Cash</td><td>Cash</td><td>1~200</td><td>Instant after paid</td><td>Users need to pay in 1 day</td><td>No</td></tr></tbody></table>
 
 **Costa Rica**
 

@@ -1,12 +1,12 @@
 ---
-description: How to use Khipu to submit a payin in Argentina.
+description: How to use BankTransfer to submit a payin in Panama.
 ---
 
-# Khipu
+# Bank Transfer
 
-{% swagger baseUrl="https://gateway-test.pagsmile.com" path="/trade/pay" method="post" summary="Payin by Khipu" %}
+{% swagger baseUrl="https://gateway-test.pagsmile.com" path="/trade/pay" method="post" summary="Payin by BankTransfer" %}
 {% swagger-description %}
-This endpoint allows you to submit a payin by Khipu in Argentina.
+This endpoint allows you to submit a payin by BankTransfer in Panama.
 {% endswagger-description %}
 
 {% swagger-parameter in="header" name="Content-Type" type="string" required="true" %}
@@ -34,16 +34,16 @@ ID given by the merchant in their system\
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="method" type="string" required="true" %}
-Fixed value: Khipu
+Fixed value: BankTransfer
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="order_currency" required="true" type="string" %}
-Fixed value: ARS
+Fixed value: USD
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="order_amount" required="true" type="string" %}
 payment amount\
-\- 50\~1,257,000 ARS (per day) -
+\- 1 \~ 100,000 USD -
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="subject" required="true" type="string" %}
@@ -52,7 +52,7 @@ payment reason or item title
 \- Max. 128 chars -
 {% endswagger-parameter %}
 
-{% swagger-parameter in="body" name="content" type="string" required="true" %}
+{% swagger-parameter in="body" name="content" type="string" %}
 payment reason detail or item detail
 
 \- Max. 255 chars -
@@ -74,12 +74,18 @@ merchant user's id
 Use [API](../../tools/supported-bank-list-query.md) to get bank code
 {% endswagger-parameter %}
 
-{% swagger-parameter in="body" name="customer.name" type="string" required="true" %}
-User's name
+{% swagger-parameter in="body" name="account_number" type="string" %}
+Account
+
+\- 5 \~ 20 digits -
 {% endswagger-parameter %}
 
-{% swagger-parameter in="body" name="customer.phone" type="string" required="true" %}
-User's phone
+{% swagger-parameter in="body" name="account_type" type="string" %}
+Should be one of CHECKING, SAVINGS
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="customer.name" type="string" required="true" %}
+User's name
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="customer.email" type="string" required="true" %}
@@ -87,35 +93,13 @@ User's email
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="customer.identify.number" type="string" required="true" %}
-User's identification number\
-\- 8 digits or 11 digits -
+User's identification number
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="customer.identify.type" type="string" required="true" %}
 User's identification type
 
-\- DNI or CUIT/CUIL/CD -
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="address.zip_code" required="false" type="string" %}
-zip code\
-\- 6 digits -
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="address.state" type="string" %}
-state
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="address.city" type="string" %}
-city
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="address.street_number" type="string" %}
-street number
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="address.street" type="string" %}
-street
+\- RUC, PASS or CE -
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="website_url" type="string" %}
@@ -127,14 +111,16 @@ merchant website URL
 {% swagger-response status="200" description="submit successfully" %}
 ```
 {
-    "code":"10000",
-    "msg":"Success",
-    "prepay_id":"d3UwdDhRbnUx****NMzdaWT0=-17FBDFe8",
-    "trade_no":"2022010110293900083",
-    "out_trade_no":"202201010354006",
-    "web_url":"",
-    "pay_url":"https://khipu.com/payment/info/ab0cdezzmz3k",
-    "trade_status":"PROCESSING"
+    "code": "10000",
+    "msg": "Success",
+    "trade_no": "2022010106532400030",
+    "out_trade_no": "202201010354010",
+    "web_url": "",
+    "pay_url": "https://checkoutv2.pagsmile.com/checkout?prepay_id=",
+    "trade_status": "PROCESSING",
+    "reference":"ZRH9-FZAT-TAHV",
+    "instruction":"{\"beneficiary\":{\"bank\":{\"code\":\"0079\",\"name\":\"LAFISE PANAMA\",\"branch\":[],\"account\":{\"number\":\"201020008603\",\"type\":\"C\"}},\"document\":{\"id\":\"155714930-2-2021\",\"type\":\"RUC\"},\"name\":\"LOCALPAYMENT PAN, S.A.\",\"type\":\"INDIVIDUAL\"},\"referenceCode\":\"ZRH9-FZAT-TAHV\"}",
+    "due_date":"2024-02-14T09:00:15.993266"
 }
 ```
 {% endswagger-response %}
@@ -154,11 +140,14 @@ merchant website URL
 {% hint style="info" %}
 **User payment tips**
 
-* Redirect users to the **pay\_url** to complete the payment
-* KHIPU works as an interface that connects the user with the Bank platform and simplifies the bank transfer flow, therefore, the user **document id,** **Clave** (Password/PIN), and **username** that users enter on KHIPU should be the same as the one they used to enter their e-banking
+**reference** is the ticket number that the user needs to use for payment
 {% endhint %}
 
-<figure><img src="../../../.gitbook/assets/image (1) (1).png" alt="" width="275"><figcaption></figcaption></figure>
+| Identify Type | Identify Number          | Description | Example                                                |
+| ------------- | ------------------------ | ----------- | ------------------------------------------------------ |
+| RUC           | Single Taxpayer Registry | 5-15 digits | 1790095389001                                          |
+| PASS          | Passport                 | 5-20        | PD0404102                                              |
+| CE            | Cedula (Local ID)        | 5-12        | <p>8-211-1816</p><p>E-1234-12345<br>1AV-1234-12345</p> |
 
 ## Example
 
@@ -168,27 +157,29 @@ curl --location --request POST 'https://gateway-test.pagsmile.com/trade/pay' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     * "app_id": "162************38",
-    * "out_trade_no": "202201010354006",
-    * "method": "Khipu",
-    * "order_amount": "50",
-    * "order_currency": "ARS",
+    * "out_trade_no": "202201010354010",
+    * "method": "BankTransfer",
+    * "order_amount": "12.01",
+    * "order_currency": "USD",
     * "subject": "trade pay test",
-    * "content": "trade pay test conent",
+      "content": "trade pay test conent",
     * "notify_url": "http://merchant/callback/success",
       "return_url": "https://www.merchant.com",
     * "buyer_id": "buyer_0101_0001",
     * "timestamp": "2022-01-01 03:54:01",
       "timeout_express":"1c",
-    * "bank" : "Si9wa",    
-    * "customer" : {
+    * "bank": "1805",
+    * "account_number": "12**4324",
+    * "account_type": "C",
+    * "customer": {
     *     "identify": {
-    *         "type": "DNI",
-    *         "number": "40754127"
+    *        "type": "RUC",
+             "number": "390**7"
           },
     *     "name": "Test User Name",
-    *     "email": "test@pagsmile.com",
-    *     "phone": "5491132463876"
+    *     "email": "test@pagsmile.com"
       }
+      }'
 ```
 
 {% hint style="info" %}
@@ -198,3 +189,5 @@ Note:  **162\*\*\*\*\*\*\*\*\*\*\*\*38** is pagsmile's test app id for sandbox, 
 {% hint style="danger" %}
 Please use your own **app\_id** and generate your own **authorization token** when testing.
 {% endhint %}
+
+<figure><img src="../../../.gitbook/assets/image.png" alt=""><figcaption><p>Example of Panama Payment page</p></figcaption></figure>

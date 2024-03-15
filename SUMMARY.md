@@ -70,6 +70,7 @@
       * [❌ Bank Transfer](payin/submit-a-payin/costa-rica/banktransfer.md)
     * [Panama](payin/submit-a-payin/panama/README.md)
       * [Cash](payin/submit-a-payin/panama/cash.md)
+      * [Bank Transfer](payin/submit-a-payin/panama/banktransfer.md)
     * [Guatemala](payin/submit-a-payin/guatemala/README.md)
       * [Cash](payin/submit-a-payin/guatemala/cash.md)
       * [❌ Bank Transfer](payin/submit-a-payin/guatemala/banktransfer.md)

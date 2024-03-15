@@ -5,7 +5,7 @@ description: Required for Some Cash and Banktransfer methods
 # Supported Bank List Query
 
 {% hint style="info" %}
-This API is only used for Brazil (OpenFinance), Chile (Khipu), Argentina, Bolivia, Paraguay and Uruguay
+This API is only used for Brazil (OpenFinance), Chile (Khipu), Argentina, Bolivia, Panama, Paraguay and Uruguay
 {% endhint %}
 
 #### Request Base URL <a href="#request-base-url" id="request-base-url"></a>

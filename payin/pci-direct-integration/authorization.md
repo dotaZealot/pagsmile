@@ -83,7 +83,7 @@ The token received from Tokenization API.
 Fixed value: 2.0
 {% endswagger-parameter %}
 
-{% swagger-parameter in="body" name="website_url" type="string" required="true" %}
+{% swagger-parameter in="body" name="website_url" type="string" required="false" %}
 
 {% endswagger-parameter %}
 
@@ -184,7 +184,7 @@ curl --location --request POST 'https://gateway-test.pagsmile.com/trade/pre-auth
       "timeout_express":"30m",
     * "token":"psct_b67******ecad89a5de",
       "version": "2.0",
-    * "website_url": "www.xcloud.com",
+      "website_url": "www.xcloud.com",
     * "issuer": "VISA",
     * "threeds": {
     *       "version":"2",

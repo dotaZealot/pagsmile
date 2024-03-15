@@ -1,6 +1,6 @@
 # Refund
 
-<table><thead><tr><th>Method</th><th width="287">Refund Type</th><th>Require User Info</th></tr></thead><tbody><tr><td>Pix</td><td>Refund through banktransfer</td><td>Required</td></tr><tr><td>Boleto</td><td>Refund through banktransfer</td><td>Required</td></tr><tr><td>Lottery</td><td>Refund through banktransfer</td><td>Required</td></tr><tr><td>Deposit Express</td><td>Refund through banktransfer</td><td>Required</td></tr><tr><td>SPEI</td><td>Refund through banktransfer</td><td>Required</td></tr><tr><td>Wallet</td><td>Refund through original source</td><td>Not Required</td></tr><tr><td>CreditCard</td><td>Refund through original source</td><td>Not Required</td></tr></tbody></table>
+<table><thead><tr><th>Method</th><th width="287">Refund Type</th><th>Require User Info</th></tr></thead><tbody><tr><td>Pix</td><td>Refund through banktransfer</td><td>Required</td></tr><tr><td>Boleto</td><td>Refund through banktransfer</td><td>Required</td></tr><tr><td>Lottery</td><td>Refund through banktransfer</td><td>Required</td></tr><tr><td>SPEI</td><td>Refund through banktransfer</td><td>Required</td></tr><tr><td>Wallet</td><td>Refund through original source</td><td>Not Required</td></tr><tr><td>CreditCard</td><td>Refund through original source</td><td>Not Required</td></tr></tbody></table>
 
 #### Request Base URL <a href="#request-base-url" id="request-base-url"></a>
 
