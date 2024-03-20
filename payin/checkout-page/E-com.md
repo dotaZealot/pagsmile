@@ -4,266 +4,82 @@ description: How to use Pagsmile Checkoutpage to submit a payin.
 
 # Checkout Page (E-com)
 
-{% swagger baseUrl="https://gateway-test.pagsmile.com" path="/trade/create" method="post" summary="Payin by using Pagsmile checkout page" %}
-{% swagger-description %}
+## Payin by using Pagsmile checkout page
+
+<mark style="color:green;">`POST`</mark> `https://gateway-test.pagsmile.com/trade/create`
+
 This endpoint allows you to submit a payin by using Pagsmile checkout page
-{% endswagger-description %}
 
-{% swagger-parameter in="header" name="Content-Type" type="string" required="true" %}
-application/json; chartset=UTF-8
-{% endswagger-parameter %}
-
-{% swagger-parameter in="header" name="Authorization" type="string" required="true" %}
-Basic Base($app\__id:$security\__key)
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="app_id" type="string" required="true" %}
-created app's id at dashboard
-
-\- Max. 32 chars -
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="timestamp" required="true" type="string" %}
-yyyy-MM-dd HH:mm:ss\
-\- Max. 19 chars -
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="out_trade_no" type="string" required="true" %}
-ID given by the merchant in their system\
-\- Max. 64 chars -&#x20;
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="method" type="string" required="false" %}
-Add this object to show only the selected method. For instance, “method”: “PIX” will only show the PIX method. To show all the methods do not add this object in the request body. Check [here](../data/payment-method.md) for all methods
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="channel" type="string" %}
-only use when method = Wallet
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="order_currency" required="true" type="string" %}
-order currency\
-\- Max. 3 chars -\
-Check [here](../data/payment-method.md) for all methods.
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="order_amount" required="true" type="string" %}
-order amount\
-\- 0.01 \~ 999999999 -
-
-(refer to amount limit for different [methods](../data/payment-method.md))
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="subject" required="true" type="string" %}
-payment reason or item title
-
-\- Max. 128 chars -
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="content" type="string" required="true" %}
-payment reason detail or item detail. This will be shown on the bank bill.
-
-\- Max. 255 chars -
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="trade_type" type="string" required="true" %}
-fixed value: WEB
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="version" type="string" required="true" %}
-fixed value: 2.0
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="timeout_express" type="string" %}
-m(minutes), h(hours), d(days), c(always end in current day).&#x20;
-
-Used to control the expiration time of **submitting** an order (from initial to processing).  (90m in default, max 15d)
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="cancellation_express" type="string" %}
-m(minutes), h(hours), d(days). The value must be an integer.&#x20;
-
-Used to cancel an order. Ex: 90m Used to control the expiration time of a processing order.
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="notify_url" type="string" required="true" %}
-Where Pagsmile will send notification to
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="return_url" type="sring" %}
-web redirect url when payment is finish
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="buyer_id" required="true" type="string" %}
-merchant user's id
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="customer.name" type="string" required="true" %}
-User's name
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="customer.email" type="string" required="true" %}
-User's email
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="customer.phone" type="string" required="true" %}
-User's phone
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="customer.identify.number" type="string" required="true" %}
-User's identification number
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="customer.identify.type" type="string" required="true" %}
-User's identification type
-
-\- check [here](../data/data-for-test-sandbox.md#user-data) to check identify type for different countries -
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="address.postal_code" required="true" type="string" %}
-zip code
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="address.country" type="string" required="true" %}
-country
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="address.state" type="string" required="true" %}
-state
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="address.city" type="string" required="true" %}
-city
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="address.street" type="string" required="true" %}
-street
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="address.street_number" type="string" required="true" %}
-street number
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="address.neighborhood" type="string" required="true" %}
-neighborhood
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="billing.name" type="string" required="true" %}
-billing name
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="billing.email" type="string" required="true" %}
-billing email
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="billing.phone" type="string" required="true" %}
-billing phone
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="billing.address.postal_code" type="string" required="true" %}
-billing zip code
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="billing.address.country" type="string" required="true" %}
-billing country
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="billing.address.state" type="string" required="true" %}
-billing state
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="billing.address.city" type="string" required="true" %}
-billing city
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="billing.address.street" type="string" required="true" %}
-billing street
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="billing.address.street_number" type="string" required="true" %}
-billing street number
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="billing.address.neighborhood" type="string" required="true" %}
-billing neighborhood
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="billing.identification.number" type="string" required="true" %}
-billing identify number
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="billing.identification.type" type="string" required="true" %}
-billing identify type
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="shipping.name" type="string" required="true" %}
-shipping name
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="shipping.email" type="string" required="true" %}
-shipping email
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="shipping.phone" type="string" required="true" %}
-shipping phone
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="shipping.address.postal_code" type="string" required="true" %}
-shipping zip code
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="shipping.address.country" type="string" required="true" %}
-shipping country
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="shipping.address.state" type="string" required="true" %}
-shipping state
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="shipping.address.city" type="string" required="true" %}
-shipping city
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="shipping.address.street" type="string" required="true" %}
-shipping street
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="shipping.address.street_number" type="string" required="true" %}
-shipping street number
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="shipping.address.neiborhood" type="string" required="true" %}
-shipping neighborhood
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="shipping.identification.number" type="string" required="true" %}
-shipping identify number
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="shipping.idenification.type" type="string" required="true" %}
-shipping identify type
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="products.quanity" type="string" required="true" %}
-product quantity
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="products.name" type="string" required="true" %}
-product name\
-\- Max. 200 chars -
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="products.url" type="string" required="true" %}
-product url\
-\- Max. 2000 chars -
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="products.description" type="string" required="true" %}
-product description\
-\- Max. 1000 chars -
-{% endswagger-parameter %}
-
-{% swagger-response status="200" description="submit successfully" %}
+#### Headers
+
+| Name                                            | Type   | Description                           |
+| ----------------------------------------------- | ------ | ------------------------------------- |
+| Content-Type<mark style="color:red;">\*</mark>  | string | application/json; chartset=UTF-8      |
+| Authorization<mark style="color:red;">\*</mark> | string | Basic Base($app\__id:$security\__key) |
+
+#### Request Body
+
+| Name                                                              | Type   | Description                                                                                                                                                                                                                                |
+| ----------------------------------------------------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| app\_id<mark style="color:red;">\*</mark>                         | string | <p>created app's id at dashboard</p><p>- Max. 32 chars -</p>                                                                                                                                                                               |
+| customer.identify.number<mark style="color:red;">\*</mark>        | string | User's identification number                                                                                                                                                                                                               |
+| method                                                            | string | Add this object to show only the selected method. For instance, “method”: “PIX” will only show the PIX method. To show all the methods do not add this object in the request body. Check [here](../data/payment-method.md) for all methods |
+| out\_trade\_no<mark style="color:red;">\*</mark>                  | string | <p>ID given by the merchant in their system<br>- Max. 64 chars - </p>                                                                                                                                                                      |
+| notify\_url<mark style="color:red;">\*</mark>                     | string | Where Pagsmile will send notification to                                                                                                                                                                                                   |
+| customer.identify.type<mark style="color:red;">\*</mark>          | string | <p>User's identification type</p><p>- check <a href="../data/data-for-test-sandbox.md#user-data">here</a> to check identify type for different countries -</p>                                                                             |
+| timestamp<mark style="color:red;">\*</mark>                       | string | <p>yyyy-MM-dd HH:mm:ss<br>- Max. 19 chars -</p>                                                                                                                                                                                            |
+| subject<mark style="color:red;">\*</mark>                         | string | <p>payment reason or item title</p><p>- Max. 128 chars -</p>                                                                                                                                                                               |
+| order\_amount<mark style="color:red;">\*</mark>                   | string | <p>order amount<br>- 0.01 ~ 999999999 -</p><p>(refer to amount limit for different <a href="../data/payment-method.md">methods</a>)</p>                                                                                                    |
+| order\_currency<mark style="color:red;">\*</mark>                 | string | <p>order currency<br>- Max. 3 chars -<br>Check <a href="../data/payment-method.md">here</a> for all methods.</p>                                                                                                                           |
+| content<mark style="color:red;">\*</mark>                         | string | <p>payment reason detail or item detail. This will be shown on the bank bill.</p><p>- Max. 255 chars -</p>                                                                                                                                 |
+| buyer\_id<mark style="color:red;">\*</mark>                       | string | merchant user's id                                                                                                                                                                                                                         |
+| address.postal\_code<mark style="color:red;">\*</mark>            | string | zip code                                                                                                                                                                                                                                   |
+| address.street<mark style="color:red;">\*</mark>                  | string | street                                                                                                                                                                                                                                     |
+| address.street\_number<mark style="color:red;">\*</mark>          | string | street number                                                                                                                                                                                                                              |
+| address.city<mark style="color:red;">\*</mark>                    | string | city                                                                                                                                                                                                                                       |
+| address.state<mark style="color:red;">\*</mark>                   | string | state                                                                                                                                                                                                                                      |
+| channel                                                           | string | only use when method = Wallet                                                                                                                                                                                                              |
+| customer.phone<mark style="color:red;">\*</mark>                  | string | User's phone                                                                                                                                                                                                                               |
+| customer.email<mark style="color:red;">\*</mark>                  | string | User's email                                                                                                                                                                                                                               |
+| customer.name<mark style="color:red;">\*</mark>                   | string | User's name                                                                                                                                                                                                                                |
+| address.country<mark style="color:red;">\*</mark>                 | string | country                                                                                                                                                                                                                                    |
+| trade\_type<mark style="color:red;">\*</mark>                     | string | fixed value: WEB                                                                                                                                                                                                                           |
+| billing.address.postal\_code<mark style="color:red;">\*</mark>    | string | billing zip code                                                                                                                                                                                                                           |
+| billing.address.country<mark style="color:red;">\*</mark>         | string | billing country                                                                                                                                                                                                                            |
+| billing.address.state<mark style="color:red;">\*</mark>           | string | billing state                                                                                                                                                                                                                              |
+| billing.address.city<mark style="color:red;">\*</mark>            | string | billing city                                                                                                                                                                                                                               |
+| billing.address.street<mark style="color:red;">\*</mark>          | string | billing street                                                                                                                                                                                                                             |
+| billing.address.street\_number<mark style="color:red;">\*</mark>  | string | billing street number                                                                                                                                                                                                                      |
+| billing.address.neighborhood<mark style="color:red;">\*</mark>    | string | billing neighborhood                                                                                                                                                                                                                       |
+| billing.identification.number<mark style="color:red;">\*</mark>   | string | billing identify number                                                                                                                                                                                                                    |
+| billing.identification.type<mark style="color:red;">\*</mark>     | string | billing identify type                                                                                                                                                                                                                      |
+| address.neighborhood<mark style="color:red;">\*</mark>            | string | neighborhood                                                                                                                                                                                                                               |
+| billing.phone<mark style="color:red;">\*</mark>                   | string | billing phone                                                                                                                                                                                                                              |
+| billing.email<mark style="color:red;">\*</mark>                   | string | billing email                                                                                                                                                                                                                              |
+| billing.name<mark style="color:red;">\*</mark>                    | string | billing name                                                                                                                                                                                                                               |
+| shipping.address.street\_number<mark style="color:red;">\*</mark> | string | shipping street number                                                                                                                                                                                                                     |
+| shipping.idenification.type<mark style="color:red;">\*</mark>     | string | shipping identify type                                                                                                                                                                                                                     |
+| shipping.identification.number<mark style="color:red;">\*</mark>  | string | shipping identify number                                                                                                                                                                                                                   |
+| shipping.address.neiborhood<mark style="color:red;">\*</mark>     | string | shipping neighborhood                                                                                                                                                                                                                      |
+| shipping.address.street<mark style="color:red;">\*</mark>         | string | shipping street                                                                                                                                                                                                                            |
+| shipping.address.city<mark style="color:red;">\*</mark>           | string | shipping city                                                                                                                                                                                                                              |
+| shipping.address.state<mark style="color:red;">\*</mark>          | string | shipping state                                                                                                                                                                                                                             |
+| shipping.address.country<mark style="color:red;">\*</mark>        | string | shipping country                                                                                                                                                                                                                           |
+| shipping.address.postal\_code<mark style="color:red;">\*</mark>   | string | shipping zip code                                                                                                                                                                                                                          |
+| shipping.phone<mark style="color:red;">\*</mark>                  | string | shipping phone                                                                                                                                                                                                                             |
+| shipping.email<mark style="color:red;">\*</mark>                  | string | shipping email                                                                                                                                                                                                                             |
+| shipping.name<mark style="color:red;">\*</mark>                   | string | shipping name                                                                                                                                                                                                                              |
+| products.quanity<mark style="color:red;">\*</mark>                | string | product quantity                                                                                                                                                                                                                           |
+| products.name<mark style="color:red;">\*</mark>                   | string | <p>product name<br>- Max. 200 chars -</p>                                                                                                                                                                                                  |
+| products.url<mark style="color:red;">\*</mark>                    | string | <p>product url<br>- Max. 2000 chars -</p>                                                                                                                                                                                                  |
+| products.description<mark style="color:red;">\*</mark>            | string | <p>product description<br>- Max. 1000 chars -</p>                                                                                                                                                                                          |
+| return\_url                                                       | sring  | web redirect url when payment is finish                                                                                                                                                                                                    |
+| timeout\_express                                                  | string | <p>m(minutes), h(hours), d(days), c(always end in current day). </p><p>Used to control the expiration time of <strong>submitting</strong> an order (from initial to processing).  (90m in default, max 15d)</p>                            |
+| version<mark style="color:red;">\*</mark>                         | string | fixed value: 2.0                                                                                                                                                                                                                           |
+| cancellation\_express                                             | string | <p>m(minutes), h(hours), d(days). The value must be an integer. </p><p>Used to cancel an order. Ex: 90m Used to control the expiration time of a processing order.</p>                                                                     |
+
+{% tabs %}
+{% tab title="200 submit successfully" %}
 ```
 {
     "code": "10000",
@@ -273,9 +89,9 @@ product description\
     "web_url": "http://checkout.pagsmile.com?prepay_id=123456"
 }
 ```
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400" description="duplicate out_trade_no" %}
+{% tab title="400 duplicate out_trade_no" %}
 ```
 {
     "code": "40002",
@@ -284,8 +100,8 @@ product description\
     "sub_msg": "out_trade_no is duplicate"
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
 ## Example
 
