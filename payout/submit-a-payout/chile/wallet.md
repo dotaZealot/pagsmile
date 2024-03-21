@@ -4,116 +4,45 @@ description: Where to use Vita wallet to submit a payout in Chile.
 
 # Wallet
 
-{% swagger method="post" path=" " baseUrl="https://sandbox.transfersmile.com/api/payout" summary="Submit a payout by Wallet in Chile" %}
-{% swagger-description %}
+## Submit a payout by Wallet in Chile
+
+<mark style="color:green;">`POST`</mark> `https://sandbox.transfersmile.com/api/payout`&#x20;
+
 This endpoint allows you to submit a payout by e-Wallet in Chile.
-{% endswagger-description %}
 
-{% swagger-parameter in="header" type="string" name="Content-Type" required="true" %}
-application/json; charset=UTF-8
-{% endswagger-parameter %}
+#### Headers
 
-{% swagger-parameter in="header" type="string" required="true" name="AppId" %}
-Your App ID in payout platform
-{% endswagger-parameter %}
+| Name                                            | Type   | Description                         |
+| ----------------------------------------------- | ------ | ----------------------------------- |
+| Content-Type<mark style="color:red;">\*</mark>  | string | application/json; charset=UTF-8     |
+| AppId<mark style="color:red;">\*</mark>         | string | Your App ID in payout platform      |
+| Authorization<mark style="color:red;">\*</mark> | string | SHA256($sorted\_params + $app\_key) |
 
-{% swagger-parameter in="body" name="name" type="string" %}
-Beneficiary's name
+#### Request Body
 
-\- Min.5 Max.100 -
-{% endswagger-parameter %}
+| Name                                                 | Type   | Description                                                                                                                |
+| ---------------------------------------------------- | ------ | -------------------------------------------------------------------------------------------------------------------------- |
+| name                                                 | string | <p>Beneficiary's name</p><p>- Min.5 Max.100 -</p>                                                                          |
+| phone                                                | string | <p>Beneficiary's phone.</p><p>- 0 ~ 15 digits -</p>                                                                        |
+| email                                                | string | <p>Beneficiary's email</p><p>- Max.64 -</p>                                                                                |
+| account<mark style="color:red;">\*</mark>            | string | <p>Beneficiary Vita account.</p><p>- 0 ~ 64 chars -</p>                                                                    |
+| account\_type<mark style="color:red;">\*</mark>      | string | Fixed Value: EMAIL                                                                                                         |
+| document\_id                                         | string | Beneficiary document id                                                                                                    |
+| document\_type                                       | string | Beneficiary document type                                                                                                  |
+| methd<mark style="color:red;">\*</mark>              | string | Fixed Value: WALLET                                                                                                        |
+| channel<mark style="color:red;">\*</mark>            | string | Fixed Value: Vita                                                                                                          |
+| custom\_code<mark style="color:red;">\*</mark>       | string | <p>Merchant's order id</p><p>- Max.50 -</p>                                                                                |
+| fee\_bear<mark style="color:red;">\*</mark>          | string | One of \[beneficiary \| merchant]                                                                                          |
+| amount<mark style="color:red;">\*</mark>             | string | <p>Payout amount, should be an Integer.</p><p>- Min 5000, Max 2,000,000 - </p>                                             |
+| amount\_type                                         | string | <p>Specify the amount value is fixed for merchant or beneficiary<br>- One of: source_amount, arrival_amount(default) -</p> |
+| arrival\_currency<mark style="color:red;">\*</mark>  | string | <p>Beneficiary's account currency.</p><p>- Fixed Value: CLP -</p>                                                          |
+| source\_currency<mark style="color:red;">\*</mark>   | string | <p>Merchant's account currency</p><p>- supported: USD, GBP, EUR, CLP -  </p>                                               |
+| notify\_url<mark style="color:red;">\*</mark>        | string | Where pagsmile will callback to                                                                                            |
+| additional\_remark<mark style="color:red;">\*</mark> | string | <p>Additional Remark<br>- Max length: 40 - </p>                                                                            |
+| country<mark style="color:red;">\*</mark>            | string | <p>Beneficiary's Country</p><p>- Fixed Value: CHL - </p>                                                                   |
 
-{% swagger-parameter in="header" type="string" required="true" name="Authorization" %}
-SHA256($sorted\_params + $app\_key)
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="phone" type="string" %}
-Beneficiary's phone.
-
-\- 0 \~ 15 digits -
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="email" type="string" %}
-Beneficiary's email
-
-\- Max.64 -
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="account" type="string" required="true" %}
-Beneficiary Vita account.
-
-\- 0 \~ 64 chars -
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="account_type" type="string" required="true" %}
-Fixed Value: EMAIL
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" type="string" name="document_id" %}
-Beneficiary document id
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" type="string" name="document_type" %}
-Beneficiary document type
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" type="string" name="methd" required="true" %}
-Fixed Value: WALLET
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" type="string" name="channel" required="true" %}
-Fixed Value: Vita
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" type="string" name="custom_code" required="true" %}
-Merchant's order id
-
-\- Max.50 -
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" type="string" name="fee_bear" required="true" %}
-One of \[beneficiary | merchant]
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" type="string" name="amount" required="true" %}
-Payout amount, should be an Integer.
-
-\- Min 1, Max 2,000,000 -&#x20;
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="amount_type" type="string" required="false" %}
-Specify the amount value is fixed for merchant or beneficiary\
-\- One of: source\_amount, arrival\_amount(default) -
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="source_currency" type="string" required="true" %}
-Merchant's account currency
-
-\- supported: USD, GBP, EUR, CLP - &#x20;
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="arrival_currency" type="string" required="true" %}
-Beneficiary's account currency.
-
-\- Fixed Value: CLP -
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="notify_url" type="string" required="true" %}
-Where pagsmile will callback to
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="additional_remark" type="string" required="true" %}
-Additional Remark\
-\- Max length: 40 -&#x20;
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" type="string" name="country" required="true" %}
-Beneficiary's Country
-
-\- Fixed Value: CHL -&#x20;
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="submit successfully" %}
+{% tabs %}
+{% tab title="200: OK submit successfully" %}
 ```javascript
 {
     "code": 200,
@@ -130,9 +59,9 @@ Beneficiary's Country
     }
 }
 ```
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="bad request" %}
+{% tab title="400: Bad Request bad request" %}
 ```javascript
 {
     "code": 4001000,
@@ -141,9 +70,9 @@ Beneficiary's Country
     "data": {}
 }
 ```
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="401: Unauthorized" description="unauthorized" %}
+{% tab title="401: Unauthorized unauthorized" %}
 ```javascript
 {
     "code": 4004003,
@@ -152,9 +81,20 @@ Beneficiary's Country
     "data": {}
 }
 ```
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="500: Internal Server Error" description="fee not configured" %}
+{% tab title="500: Internal Server Error system error" %}
+```javascript
+{
+    "code": 5001000,
+    "msg": "system error",
+    "time": 1637224716,
+    "data": {}
+}
+```
+{% endtab %}
+
+{% tab title="500: Internal Server Error fee not configured" %}
 ```javascript
 {
     "code": 5001003,
@@ -165,9 +105,9 @@ Beneficiary's Country
     }
 }
 ```
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="500: Internal Server Error" description="balance insufficient" %}
+{% tab title="500: Internal Server Error balance insufficient" %}
 ```javascript
 {
     "code": 5001102,
@@ -178,19 +118,8 @@ Beneficiary's Country
     }
 }
 ```
-{% endswagger-response %}
-
-{% swagger-response status="500: Internal Server Error" description="system error" %}
-```javascript
-{
-    "code": 5001000,
-    "msg": "system error",
-    "time": 1637224716,
-    "data": {}
-}
-```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
 ## Example of Document
 

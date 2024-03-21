@@ -4,110 +4,45 @@ description: How to use Bank Transfer to submit a payout in Chile.
 
 # BankTransfer
 
-{% swagger method="post" path="/api/payout" baseUrl="https://sandbox.transfersmile.com" summary="Submit a payout by Bank Transfer in Chile." %}
-{% swagger-description %}
+## Submit a payout by Bank Transfer in Chile.
+
+<mark style="color:green;">`POST`</mark> `https://sandbox.transfersmile.com/api/payout`
+
 This endpoint allows you to submit a payout by Bank Transfer in Chile.
-{% endswagger-description %}
 
-{% swagger-parameter in="header" name="Content-Type" type="string" required="true" %}
-application/json; charset=UTF-8
-{% endswagger-parameter %}
+#### Headers
 
-{% swagger-parameter in="header" name="AppId" type="string" required="true" %}
-Your App ID in payout platform
-{% endswagger-parameter %}
+| Name                                            | Type   | Description                         |
+| ----------------------------------------------- | ------ | ----------------------------------- |
+| Content-Type<mark style="color:red;">\*</mark>  | string | application/json; charset=UTF-8     |
+| AppId<mark style="color:red;">\*</mark>         | string | Your App ID in payout platform      |
+| Authorization<mark style="color:red;">\*</mark> | string | SHA256($sorted\_params + $app\_key) |
 
-{% swagger-parameter in="body" name="name" type="string" required="true" %}
-Beneficiary's name, length must between 5 and 100
-{% endswagger-parameter %}
+#### Request Body
 
-{% swagger-parameter in="header" type="string" name="Authorization" required="true" %}
-SHA256($sorted\_params + $app\_key)
-{% endswagger-parameter %}
+| Name                                                 | Type   | Description                                                                                                                |
+| ---------------------------------------------------- | ------ | -------------------------------------------------------------------------------------------------------------------------- |
+| name<mark style="color:red;">\*</mark>               | string | Beneficiary's name, length must between 5 and 100                                                                          |
+| phone                                                | string | <p>Beneficiary's phone</p><p>- 0 ~ 15 digits -</p>                                                                         |
+| email                                                | string | Beneficiary 's email                                                                                                       |
+| bank\_code<mark style="color:red;">\*</mark>         | string | Bank code, see [_**bank list**_](../../bank-code/bank-in-chile.md)                                                         |
+| account<mark style="color:red;">\*</mark>            | string | <p>Account, max length is 20</p><p>- 8 ~ 20 digits -</p>                                                                   |
+| account\_type<mark style="color:red;">\*</mark>      | string | Should be one of CHECKING, SAVINGS, VISTA, RUT, SALARY.                                                                    |
+| document\_id<mark style="color:red;">\*</mark>       | string | Beneficiary document id                                                                                                    |
+| document\_type<mark style="color:red;">\*</mark>     | string | Beneficiary document type, should be one of RUT, RUN, PAS, CE.                                                             |
+| method<mark style="color:red;">\*</mark>             | string | Fixed Value: BankTransfer                                                                                                  |
+| custom\_code<mark style="color:red;">\*</mark>       | string | <p>Merchant's order id</p><p>- Max.50 -</p>                                                                                |
+| fee\_bear<mark style="color:red;">\*</mark>          | string | One of \[beneficiary \| merchant]                                                                                          |
+| amount<mark style="color:red;">\*</mark>             | string | <p>Payout amount, should be an Integer.</p><p>- Min 1, Max 2,000,000 -</p>                                                 |
+| source\_currency<mark style="color:red;">\*</mark>   | string | <p>Merchant's account currency</p><p>-  supported: USD, GBP, EUR, CLP -</p>                                                |
+| arrival\_currency<mark style="color:red;">\*</mark>  | string | <p>Beneficiary's account currency.</p><p>- Fixed Value: CLP -</p>                                                          |
+| notify\_url<mark style="color:red;">\*</mark>        | string | Where pagsmile will callback to                                                                                            |
+| additional\_remark<mark style="color:red;">\*</mark> | string | <p>Additional Remark<br>- Max Length: 40 - </p>                                                                            |
+| country<mark style="color:red;">\*</mark>            | string | Fixed value: CHL, for Chile                                                                                                |
+| amount\_type                                         | string | <p>Specify the amount value is fixed for merchant or beneficiary<br>- One of: source_amount, arrival_amount(default) -</p> |
 
-{% swagger-parameter in="body" name="phone" type="string" %}
-Beneficiary's phone
-
-\- 0 \~ 15 digits -
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="email" type="string" %}
-Beneficiary 's email
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="bank_code" type="string" required="true" %}
-Bank code, see [_**bank list**_](../../bank-code/bank-in-chile.md)
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" type="string" name="account" required="true" %}
-Account, max length is 20
-
-\- 8 \~ 20 digits -
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="account_type" type="string" required="true" %}
-Should be one of CHECKING, SAVINGS, VISTA, RUT, SALARY.
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="document_id" type="string" required="true" %}
-Beneficiary document id
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="document_type" type="string" required="true" %}
-Beneficiary document type, should be one of RUT, RUN, PAS, CE.
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="method" type="string" required="true" %}
-Fixed Value: BankTransfer
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="custom_code" type="string" required="true" %}
-Merchant's order id
-
-\- Max.50 -
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="fee_bear" type="string" required="true" %}
-One of \[beneficiary | merchant]
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="amount" type="string" required="true" %}
-Payout amount, should be an Integer.
-
-\- Min 1, Max 2,000,000 -
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="amount_type" type="string" %}
-Specify the amount value is fixed for merchant or beneficiary\
-\- One of: source\_amount, arrival\_amount(default) -
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="source_currency" type="string" required="true" %}
-Merchant's account currency
-
-\-  supported: USD, GBP, EUR, CLP -
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="arrival_currency" type="string" required="true" %}
-Beneficiary's account currency.
-
-\- Fixed Value: CLP -
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="notify_url" type="string" required="true" %}
-Where pagsmile will callback to
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" type="string" name="additional_remark" required="true" %}
-Additional Remark\
-\- Max Length: 40 -&#x20;
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" type="string" name="country" required="true" %}
-Fixed value: CHL, for Chile
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="success" %}
+{% tabs %}
+{% tab title="200: OK success" %}
 ```javascript
 {
     "code": 200,
@@ -124,9 +59,9 @@ Fixed value: CHL, for Chile
     }
 }
 ```
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="bad request" %}
+{% tab title="400: Bad Request bad request" %}
 ```javascript
 {
     "code": 4001000,
@@ -137,9 +72,9 @@ Fixed value: CHL, for Chile
     }
 }
 ```
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="401: Unauthorized" description="unautorized" %}
+{% tab title="401: Unauthorized unautorized" %}
 ```javascript
 {
     "code": 4004003,
@@ -148,35 +83,9 @@ Fixed value: CHL, for Chile
     "data": {}
 }
 ```
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="500: Internal Server Error" description="fee not configured" %}
-```javascript
-{
-    "code": 5001003,
-    "msg": "fee not configured",
-    "time": 1637224716,
-    "data": {
-        ... ...
-    }
-}
-```
-{% endswagger-response %}
-
-{% swagger-response status="500: Internal Server Error" description="balance insufficient" %}
-```javascript
-{
-    "code": 5001102,
-    "msg": "balance insufficient",
-    "time": 1637224716,
-    "data": {
-        ... ...
-    }
-}
-```
-{% endswagger-response %}
-
-{% swagger-response status="500: Internal Server Error" description="system error" %}
+{% tab title="500: Internal Server Error system error" %}
 ```javascript
 {
     "code": 5001000,
@@ -187,8 +96,34 @@ Fixed value: CHL, for Chile
     }
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+
+{% tab title="500: Internal Server Error fee not configured" %}
+```javascript
+{
+    "code": 5001003,
+    "msg": "fee not configured",
+    "time": 1637224716,
+    "data": {
+        ... ...
+    }
+}
+```
+{% endtab %}
+
+{% tab title="500: Internal Server Error balance insufficient" %}
+```javascript
+{
+    "code": 5001102,
+    "msg": "balance insufficient",
+    "time": 1637224716,
+    "data": {
+        ... ...
+    }
+}
+```
+{% endtab %}
+{% endtabs %}
 
 ## Example
 
