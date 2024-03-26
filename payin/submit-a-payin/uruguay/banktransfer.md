@@ -2,141 +2,53 @@
 description: How to use BankTransfer to submit a payin in Uruguay.
 ---
 
-# Bank Transfer
+# ❌ Bank Transfer
 
-{% swagger baseUrl="https://gateway-test.pagsmile.com" path="/trade/pay" method="post" summary="Payin by BankTransfer" %}
-{% swagger-description %}
+## Payin by BankTransfer
+
+<mark style="color:green;">`POST`</mark> `https://gateway-test.pagsmile.com/trade/pay`
+
 This endpoint allows you to submit a payin by BankTransfer in Uruguay.
-{% endswagger-description %}
 
-{% swagger-parameter in="header" name="Content-Type" type="string" required="true" %}
-application/json; chartset=UTF-8
-{% endswagger-parameter %}
+#### Headers
 
-{% swagger-parameter in="header" name="Authorization" type="string" required="true" %}
-Basic Base($app\__id:$security\__key)
-{% endswagger-parameter %}
+| Name                                            | Type   | Description                           |
+| ----------------------------------------------- | ------ | ------------------------------------- |
+| Content-Type<mark style="color:red;">\*</mark>  | string | application/json; chartset=UTF-8      |
+| Authorization<mark style="color:red;">\*</mark> | string | Basic Base($app\__id:$security\__key) |
 
-{% swagger-parameter in="body" name="app_id" type="string" required="true" %}
-created app's id at dashboard
+#### Request Body
 
-\- Max. 32 chars -
-{% endswagger-parameter %}
+| Name                                                       | Type   | Description                                                                      |
+| ---------------------------------------------------------- | ------ | -------------------------------------------------------------------------------- |
+| app\_id<mark style="color:red;">\*</mark>                  | string | <p>created app's id at dashboard</p><p>- Max. 32 chars -</p>                     |
+| customer.phone                                             | string | User's phone                                                                     |
+| customer.email<mark style="color:red;">\*</mark>           | string | User's email                                                                     |
+| customer.identify.number<mark style="color:red;">\*</mark> | string | <p>User's identification number<br>- CI: 8 digits </p><p>   RUT: 12 digits -</p> |
+| method<mark style="color:red;">\*</mark>                   | string | Fixed value: BankTransfer                                                        |
+| out\_trade\_no<mark style="color:red;">\*</mark>           | string | <p>ID given by the merchant in their system<br>- Max. 64 chars - </p>            |
+| notify\_url<mark style="color:red;">\*</mark>              | string | Where Pagsmile will send notification to                                         |
+| customer.identify.type<mark style="color:red;">\*</mark>   | string | <p>User's identification type</p><p>- CI, RUT -</p>                              |
+| customer.name<mark style="color:red;">\*</mark>            | string | User's name                                                                      |
+| timestamp<mark style="color:red;">\*</mark>                | string | <p>yyyy-MM-dd HH:mm:ss<br>- Max. 19 chars -</p>                                  |
+| subject<mark style="color:red;">\*</mark>                  | string | <p>payment reason or item title</p><p>- Max. 128 chars -</p>                     |
+| order\_amount<mark style="color:red;">\*</mark>            | string | <p>payment amount<br>- 1 - 5,000,000 UYU -</p>                                   |
+| order\_currency<mark style="color:red;">\*</mark>          | string | Fixed value: UYU                                                                 |
+| content                                                    | string | <p>payment reason detail or item detail</p><p>- Max. 255 chars -</p>             |
+| buyer\_id<mark style="color:red;">\*</mark>                | string | merchant user's id                                                               |
+| address.zip\_code                                          | string | <p>zip code<br>- 5 digits -</p>                                                  |
+| website\_url                                               | string | <p>merchant website URL</p><p>- Max. 128 chars -</p>                             |
+| address.street                                             | string | street                                                                           |
+| address.street\_number                                     | string | street number                                                                    |
+| address.city                                               | string | city                                                                             |
+| address.state                                              | string | state                                                                            |
+| return\_url                                                | string | Redirect to Merchant's url when user finished checkout                           |
+| account\_number<mark style="color:red;">\*</mark>          | string | User's bank account number                                                       |
+| bank<mark style="color:red;">\*</mark>                     | string | Use [API](../../tools/supported-bank-list-query.md) to get bank code             |
+| account\_type<mark style="color:red;">\*</mark>            | string | <p>User's bank account type</p><p>- One of: SAVINGS, CHECKING - </p>             |
 
-{% swagger-parameter in="body" name="timestamp" required="true" type="string" %}
-yyyy-MM-dd HH:mm:ss\
-\- Max. 19 chars -
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="out_trade_no" type="string" required="true" %}
-ID given by the merchant in their system\
-\- Max. 64 chars -&#x20;
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="method" type="string" required="true" %}
-Fixed value: BankTransfer
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="order_currency" required="true" type="string" %}
-Fixed value: UYU
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="order_amount" required="true" type="string" %}
-payment amount\
-\- 1 - 5,000,000 UYU -
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="subject" required="true" type="string" %}
-payment reason or item title
-
-\- Max. 128 chars -
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="content" type="string" %}
-payment reason detail or item detail
-
-\- Max. 255 chars -
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="notify_url" type="string" required="true" %}
-Where Pagsmile will send notification to
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="return_url" type="string" %}
-Redirect to Merchant's url when user finished checkout
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="buyer_id" required="true" type="string" %}
-merchant user's id
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="bank" required="true" type="string" %}
-Use [API](../../tools/supported-bank-list-query.md) to get bank code
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="account_number" required="true" type="string" %}
-User's bank account number
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" type="string" name="account_type" required="true" %}
-User's bank account type
-
-\- One of: SAVINGS, CHECKING -&#x20;
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="customer.name" type="string" required="true" %}
-User's name
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="customer.phone" type="string" required="false" %}
-User's phone
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="customer.email" type="string" required="true" %}
-User's email
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="customer.identify.number" type="string" required="true" %}
-User's identification number\
-\- CI: 8 digits&#x20;
-
-&#x20;  RUT: 12 digits -
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="customer.identify.type" type="string" required="true" %}
-User's identification type
-
-\- CI, RUT -
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="address.zip_code" required="false" type="string" %}
-zip code\
-\- 5 digits -
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="address.state" type="string" %}
-state
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="address.city" type="string" %}
-city
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="address.street_number" type="string" %}
-street number
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="address.street" type="string" %}
-street
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="website_url" type="string" %}
-merchant website URL
-
-\- Max. 128 chars -
-{% endswagger-parameter %}
-
-{% swagger-response status="200" description="submit successfully" %}
+{% tabs %}
+{% tab title="200 submit successfully" %}
 ```
 {
     "code": "10000",
@@ -150,9 +62,9 @@ merchant website URL
     "instruction":"{\"beneficiary\":{\"bank\":{\"code\":\"0013\",\"name\":\"BROU\",\"branch\":{\"code\":\"null\"},\"account\":{\"number\":\"110309016-00001\",\"type\":\"C\"}},\"document\":{\"id\":\"218730880015\",\"type\":\"RUT\"},\"name\":\"Pagsmile\",\"type\":\"INDIVIDUAL\"},\"referenceCode\":\"2209004197\"}"
 }
 ```
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400" description="duplicate out_trade_no" %}
+{% tab title="400 duplicate out_trade_no" %}
 ```
 {
     "code": "40002",
@@ -161,8 +73,8 @@ merchant website URL
     "sub_msg": "out_trade_no is duplicate"
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
 {% hint style="info" %}
 **User payment tips**

@@ -30,7 +30,7 @@
 
 **Bolivia**
 
-<table><thead><tr><th width="157">Parameter</th><th width="157">Method</th><th width="184">Amount Limit(BOB)</th><th width="145">Settled Time</th><th>Expire Time</th><th>Refund</th></tr></thead><tbody><tr><td>BankTransfer</td><td>Bank Transfer</td><td>1 - 1,000,000</td><td>Up to 2 working days</td><td>Users need to pay in 7 days</td><td>No</td></tr></tbody></table>
+<table><thead><tr><th width="157">Parameter</th><th width="157">Method</th><th width="184">Amount Limit(BOB)</th><th width="145">Settled Time</th><th>Expire Time</th><th>Refund</th></tr></thead><tbody><tr><td><del>BankTransfer</del></td><td>Bank Transfer</td><td>1 - 1,000,000</td><td>Up to 2 working days</td><td>Users need to pay in 7 days</td><td>No</td></tr></tbody></table>
 
 **Paraguay**
 
@@ -38,7 +38,7 @@
 
 **Uruguay**
 
-<table><thead><tr><th width="156">Parameter</th><th width="174">Method</th><th width="180">Amount Limit(UYU)</th><th width="145">Settled Time</th><th>Expire Time</th><th>Refund</th></tr></thead><tbody><tr><td>BankTransfer</td><td>Bank Transfer</td><td>1 - 5,000,000</td><td>Up to 2 working days</td><td>Users need to pay in 7 days</td><td>No</td></tr></tbody></table>
+<table><thead><tr><th width="156">Parameter</th><th width="174">Method</th><th width="180">Amount Limit(UYU)</th><th width="145">Settled Time</th><th>Expire Time</th><th>Refund</th></tr></thead><tbody><tr><td><del>BankTransfer</del></td><td>Bank Transfer</td><td>1 - 5,000,000</td><td>Up to 2 working days</td><td>Users need to pay in 7 days</td><td>No</td></tr></tbody></table>
 
 **Guatemala**
 
